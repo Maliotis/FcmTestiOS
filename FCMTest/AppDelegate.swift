@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        self.registerForPushNotification()
+        
+//        let center = UNUserNotificationCenter.current()
+//        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+//            // Enable or disable features based on authorization.
+//        }
         return true
     }
 
